@@ -31,11 +31,12 @@ jobs:
           npm run verify:es2019
 
       # Upload build file to the release as an asset.
-      - name: Upload js to release
-        uses: svenstaro/upload-release-action@2.0.0
+      - name: Upload JS files to release
+        uses: svenstaro/upload-release-action@2.9.0
+
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: dist/week-planner-card.js
-          asset_name: week-planner-card.js
+          file: dist/*.js
+          file_glob: true
           tag: ${{ github.ref }}
           overwrite: true
